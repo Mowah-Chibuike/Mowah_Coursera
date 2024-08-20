@@ -9,13 +9,14 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file stats.c 
+ * @brief main file for the statistics application 
  *
- * <Add Extended Description Here>
+ * This file contains the definitions of all fuctions used in this application
+ * and the entry point of the application
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Chibuike Mowah
+ * @date 20 Aug 2024
  *
  */
 
@@ -35,9 +36,25 @@ void main() {
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
-  /* Other Variable Declarations Go Here */
-  /* Statistics and Printing Functions Go Here */
-
 }
 
-/* Add other Implementation File Code Here */
+void print_statistics(unsigned char *arr, unsigned int size)
+{}
+
+void print_array(unsigned char *arr, unsigned int size)
+{}
+
+unsigned char find_median(unsigned char *arr, unsigned int size)
+{}
+
+unsigned char find_mean(unsigned char *arr, unsigned int size)
+{}
+
+unsigned char find_maximum(unsigned char *arr, unsigned int size)
+{}
+
+unsigned char find_minimum(unsigned char *arr, unsigned int size)
+{}
+
+void sort_array(unsigned char *arr, unsigned int size)
+{}
