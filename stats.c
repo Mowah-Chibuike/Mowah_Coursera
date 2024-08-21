@@ -36,25 +36,107 @@ void main() {
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
+  print_array(test, SIZE);
+  print_statistics(test, SIZE);
+  sort_array(test, SIZE);
+  print_array(test, SIZE);
 }
 
 void print_statistics(unsigned char *arr, unsigned int size)
-{}
+{
+	printf("Minimum value: %d\n", find_minimum(arr, size));
+	printf("Maximum value: %d\n", find_maximum(arr, size));
+	printf("Mean value: %d\n", find_mean(arr, size));
+	printf("Median value: %d\n", find_median(arr, size));
+}
 
 void print_array(unsigned char *arr, unsigned int size)
-{}
+{
+	int i;
+	char *delim = "";
+
+	printf("[ ");
+	for (i = 0; i < size; i++)
+	{
+		printf("%s%d", delim, arr[i]);
+		if (i == 0)
+			delim = ", ";
+	}
+	puts("]");
+}
 
 unsigned char find_median(unsigned char *arr, unsigned int size)
-{}
+{
+	unsigned char median = 0;
+	int indices = size - 1;
+
+	sort_array(arr, size);
+	if (size % 2)
+		median = arr[indices/2] + 1;
+	else
+		median = (arr[indices/2] + arr[(indices/2) + 1]) / 2;
+	return (median);
+}
 
 unsigned char find_mean(unsigned char *arr, unsigned int size)
-{}
+{
+	int i, sum;
+
+	i = sum = 0;
+	for (; i < size; i++)
+		sum += arr[i];
+	return (sum / size);
+
+}
 
 unsigned char find_maximum(unsigned char *arr, unsigned int size)
-{}
+{
+	sort_array(arr, size);
+	return (arr[0]);
+}
 
 unsigned char find_minimum(unsigned char *arr, unsigned int size)
-{}
+{
+	sort_array(arr, size);
+	return (arr[size - 1]);
+}
 
 void sort_array(unsigned char *arr, unsigned int size)
-{}
+{
+	int i, j, k, left_size = size/2, right_size = size - (size/2);
+	unsigned char left_arr[left_size], right_arr[right_size];
+
+	if (size > 1)
+	{
+		sort_array(arr, left_size);
+		sort_array(arr+left_size, right_size);
+
+		for (i = 0; i < left_size; i++)
+			left_arr[i] = arr[i];
+		for (j = 0; j < right_size; j++)
+			right_arr[j] = arr[left_size+j];
+
+		i = j = k = 0;
+		while (i < left_size && j < right_size) {
+			if (left_arr[i] >= right_arr[j]) {
+				arr[k] = left_arr[i];
+				i++;
+			}
+			else {
+				arr[k] = right_arr[j];
+				j++;
+			}
+			k++;
+		}
+		while (i < left_size) {
+			arr[k] = left_arr[i];
+			i++;
+			k++;
+		}
+		while (j < right_size) {
+			arr[k] = right_arr[j];
+			j++;
+			k++;
+		}
+	}
+}
